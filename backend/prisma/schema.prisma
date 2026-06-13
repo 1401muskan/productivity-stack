@@ -20,4 +20,21 @@ model User {
   password  String
   role      Role     @default(MEMBER)
   createdAt DateTime @default(now())
+
+  notes Note[]
+}
+
+model Note {
+  id      String @id @default(uuid())
+  title   String
+  content String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }

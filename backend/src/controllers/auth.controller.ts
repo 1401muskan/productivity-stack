@@ -3,6 +3,8 @@ import {
   loginUser,
   registerUser,
 } from "../services/auth.services.js";
+import { prisma } from "../config/prisma.js";
+import type { AuthRequest } from "../middlewares/auth.middleware.js";
 
 export const register = async (
   req: Request,
@@ -43,6 +45,37 @@ export const login = async (
   } catch (error: any) {
     res.status(400).json({
       message: error.message,
+    });
+  }
+};
+
+export const getCurrentUser = async (
+  req: AuthRequest,
+  res: Response
+) => {
+  try {
+    if (!req.userId) {
+      return res.status(401).json({
+        message: "Unauthorized",
+      });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: req.userId,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+      },
+    });
+
+    res.json(user);
+  } catch {
+    res.status(500).json({
+      message: "Server Error",
     });
   }
 };
