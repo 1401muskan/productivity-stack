@@ -39,16 +39,34 @@ export const getNote = async (
   });
 };
 
+// export const updateNote = async (
+//   id: string,
+//   userId: string,
+//   title: string,
+//   content: string
+// ) => {
+//   return prisma.note.updateMany({
+//     where: {
+//       id,
+//       userId,
+//     },
+//     data: {
+//       title,
+//       content,
+//     },
+//   });
+// };
+
+
 export const updateNote = async (
   id: string,
   userId: string,
   title: string,
   content: string
 ) => {
-  return prisma.note.updateMany({
+  return prisma.note.update({
     where: {
       id,
-      userId,
     },
     data: {
       title,

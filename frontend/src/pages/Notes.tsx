@@ -5,6 +5,7 @@ import {
   getNotes,
   updateNote,
 } from "../api/notes";
+import NoteEditor from "../components/editor/NoteEditor";
 
 interface Note {
   id: string;
@@ -144,7 +145,7 @@ export default function Notes() {
                 className="w-full bg-transparent text-white text-3xl mb-6 outline-none"
               />
 
-              <textarea
+              {/* <textarea
                 value={
                   selectedNote.content
                 }
@@ -156,7 +157,17 @@ export default function Notes() {
                   })
                 }
                 className="w-full h-80 bg-transparent text-zinc-300 outline-none resize-none"
-              />
+              /> */}
+
+              <NoteEditor
+                content={selectedNote.content}
+                onChange={(content) =>
+                    setSelectedNote({
+                        ...selectedNote,
+                        content,
+                    })
+                }
+                />
 
               <button
                 onClick={
