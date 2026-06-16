@@ -1,4 +1,34 @@
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import { getStats }
+  from "../api/dashboard";
+
 export default function Dashboard() {
+
+   const [stats, setStats] =
+  useState({
+    notes: 0,
+    tasks: 0,
+    events: 0,
+  });
+
+useEffect(() => {
+  const fetchStats =
+    async () => {
+      const response =
+        await getStats();
+
+      setStats(
+        response.data
+      );
+    };
+
+  fetchStats();
+}, []); 
+
   return (
     <div>
 
@@ -14,7 +44,7 @@ export default function Dashboard() {
           </h3>
 
           <p className="text-3xl text-white mt-3">
-            0
+            {stats.notes}
           </p>
         </div>
 

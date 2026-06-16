@@ -71,10 +71,11 @@ export default function Login() {
           style={{
             fontSize: "32px",
             marginBottom: "10px",
+            color: "white",
           }}
         >
           Welcome Back
-        </h1>
+      </h1>
 
         <p
           style={{
@@ -97,7 +98,11 @@ export default function Login() {
             width: "100%",
             padding: "12px",
             marginBottom: "12px",
-          }}
+            background: "#09090b",
+            color: "white",
+            border: "1px solid #27272a",
+            borderRadius: "10px",
+      }}
         />
 
         <input
@@ -113,6 +118,10 @@ export default function Login() {
             width: "100%",
             padding: "12px",
             marginBottom: "20px",
+            background: "#09090b",
+            color: "white",
+            border: "1px solid #27272a",
+            borderRadius: "10px",
           }}
         />
 
@@ -136,6 +145,7 @@ export default function Login() {
         <p
           style={{
             marginTop: "20px",
+            color: "#a1a1aa",
           }}
         >
           Don't have an account?{" "}

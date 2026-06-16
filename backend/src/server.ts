@@ -3,6 +3,8 @@ import cors from "cors";
 
 import authRoutes from "./routes/auth.routes.js";
 import noteRoutes from "./routes/note.routes.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
+import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.get("/", (_, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/tasks", taskRoutes);
 
 app.get("/test", (req, res) => {
   res.json({
