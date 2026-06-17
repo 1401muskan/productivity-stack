@@ -1,6 +1,47 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { registerUser } from "../api/auth";
 
 export default function Register() {
+  const navigate = useNavigate();
+
+  const [name, setName] =
+    useState("");
+
+  const [email, setEmail] =
+    useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const handleRegister = async () => {
+    try {
+      setLoading(true);
+
+      await registerUser(
+        name,
+        email,
+        password
+      );
+
+      alert(
+        "Registration successful"
+      );
+
+      navigate("/");
+    } catch (error) {
+      alert(
+        "Registration failed"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div
       style={{
@@ -19,77 +60,49 @@ export default function Register() {
           borderRadius: "20px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "32px",
-            marginBottom: "10px",
-            fontWeight: "700",
-          }}
-        >
-          Create Account
-        </h1>
+        <h1>Create Account</h1>
 
         <input
+          value={name}
+          onChange={(e) =>
+            setName(e.target.value)
+          }
           placeholder="Name"
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "12px",
-            borderRadius: "10px",
-            border: "1px solid #27272a",
-            background: "#09090b",
-            color: "white",
-          }}
         />
 
         <input
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
           placeholder="Email"
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "12px",
-            borderRadius: "10px",
-            border: "1px solid #27272a",
-            background: "#09090b",
-            color: "white",
-          }}
         />
 
         <input
           type="password"
+          value={password}
+          onChange={(e) =>
+            setPassword(
+              e.target.value
+            )
+          }
           placeholder="Password"
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "20px",
-            borderRadius: "10px",
-            border: "1px solid #27272a",
-            background: "#09090b",
-            color: "white",
-          }}
         />
 
         <button
-          style={{
-            width: "100%",
-            padding: "12px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#7c3aed",
-            color: "white",
-          }}
+          onClick={handleRegister}
+          disabled={loading}
         >
-          Register
+          {loading
+            ? "Registering..."
+            : "Register"}
         </button>
 
-        <p
-          style={{
-            marginTop: "20px",
-            color: "#a1a1aa",
-          }}
-        >
-          Already have an account?{" "}
-          <Link to="/">Login</Link>
+        <p>
+          Already have an account?
+          <Link to="/">
+            Login
+          </Link>
         </p>
       </div>
     </div>
