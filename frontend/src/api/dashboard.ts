@@ -7,7 +7,7 @@ import { API_URL } from "../config/api";
 const DASHBOARD_URL =
   `${API_URL}/dashboard`;
 
-const token =
+const getToken = () =>
   localStorage.getItem("token");
 
 export const getStats = () =>
@@ -16,7 +16,7 @@ export const getStats = () =>
     {
       headers: {
         Authorization:
-          `Bearer ${token}`,
+          `Bearer ${getToken()}`,
       },
     }
   );
