@@ -3,12 +3,13 @@ import { API_URL } from "../config/api";
 
 // const API_URL =
 //   "http://localhost:8000/api/notes";
+const NOTES_URL = `${API_URL}/notes`;
 
 const getToken = () =>
   localStorage.getItem("token");
 
 export const getNotes = () => {
-  return axios.get(API_URL, {
+  return axios.get(NOTES_URL, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
@@ -20,7 +21,7 @@ export const createNote = (
   content: string
 ) => {
   return axios.post(
-    API_URL,
+    NOTES_URL,
     {
       title,
       content,
@@ -39,7 +40,7 @@ export const updateNote = (
   content: string
 ) => {
   return axios.put(
-    `${API_URL}/${id}`,
+    `${NOTES_URL}/${id}`,
     {
       title,
       content,
@@ -56,7 +57,7 @@ export const deleteNote = (
   id: string
 ) => {
   return axios.delete(
-    `${API_URL}/${id}`,
+    `${NOTES_URL}/${id}`,
     {
       headers: {
         Authorization: `Bearer ${getToken()}`,

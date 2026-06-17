@@ -4,11 +4,13 @@ import { API_URL } from "../config/api";
 // const API_URL =
 //   "http://localhost:8000/api/tasks";
 
+const TASKS_URL = `${API_URL}/tasks`;
+
 const getToken = () =>
   localStorage.getItem("token");
 
 export const getTasks = () =>
-  axios.get(API_URL, {
+  axios.get(TASKS_URL, {
     headers: {
       Authorization:
         `Bearer ${getToken()}`,
@@ -20,7 +22,7 @@ export const createTask = (
   description: string
 ) =>
   axios.post(
-    API_URL,
+    TASKS_URL,
     {
       title,
       description,
@@ -40,7 +42,7 @@ export const updateTask = (
   status: string
 ) =>
   axios.put(
-    `${API_URL}/${id}`,
+    `${TASKS_URL}/${id}`,
     {
       title,
       description,
@@ -58,7 +60,7 @@ export const deleteTask = (
   id: string
 ) =>
   axios.delete(
-    `${API_URL}/${id}`,
+    `${TASKS_URL}/${id}`,
     {
       headers: {
         Authorization:

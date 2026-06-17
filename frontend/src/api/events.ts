@@ -3,12 +3,13 @@ import { API_URL } from "../config/api";
 
 // const API_URL =
 //   "http://localhost:8000/api/events";
+const EVENTS_URL = `${API_URL}/events`;
 
 const getToken = () =>
   localStorage.getItem("token");
 
 export const getEvents = () =>
-  axios.get(API_URL, {
+  axios.get(EVENTS_URL, {
     headers: {
       Authorization:
         `Bearer ${getToken()}`,
@@ -21,7 +22,7 @@ export const createEvent = (
   end: string
 ) =>
   axios.post(
-    API_URL,
+    EVENTS_URL,
     {
       title,
       start,
@@ -42,7 +43,7 @@ export const updateEvent = (
   end: string
 ) =>
   axios.put(
-    `${API_URL}/${id}`,
+    `${EVENTS_URL}/${id}`,
     {
       title,
       start,
@@ -60,7 +61,7 @@ export const deleteEvent = (
   id: string
 ) =>
   axios.delete(
-    `${API_URL}/${id}`,
+    `${EVENTS_URL}/${id}`,
     {
       headers: {
         Authorization:
