@@ -22,7 +22,7 @@ export default function Register() {
 
       alert("Registration successful");
 
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       alert("Registration failed");
     } finally {
@@ -147,7 +147,7 @@ export default function Register() {
         >
           Already have an account?{" "}
           <Link
-            to="/"
+            to="/login"
             style={{
               color: "#a78bfa",
             }}

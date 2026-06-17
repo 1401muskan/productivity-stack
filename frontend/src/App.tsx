@@ -1,32 +1,4 @@
-// import {
-//  BrowserRouter,
-//  Routes,
-//  Route
-// } from "react-router-dom";
-
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-
-// function App() {
-//  return (
-//   <BrowserRouter>
-//    <Routes>
-//     <Route path="/" element={<Login />} />
-//     <Route path="/register" element={<Register />} />
-//    </Routes>
-//   </BrowserRouter>
-//  );
-// }
-
-// export default App;
-
-
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import Notes from "./pages/Notes";
@@ -42,18 +14,12 @@ import AppLayout from "./components/layout/AppLayout";
 export default function App() {
   return (
     <BrowserRouter>
-
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
 
-        <Route
-          path="/"
-          element={<Login />}
-        />
+        <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/register"
-          element={<Register />}
-        />
+        <Route path="/register" element={<Register />} />
 
         <Route
           path="/dashboard"
@@ -98,9 +64,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
       </Routes>
-
     </BrowserRouter>
   );
 }
