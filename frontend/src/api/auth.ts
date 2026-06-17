@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_URL } from "../config/api";
 
-const API_URL =
-  "http://localhost:8000/api/auth";
+// const API_URL =
+//   "http://localhost:8000/api/auth";
 
 export const registerUser = (
   name: string,

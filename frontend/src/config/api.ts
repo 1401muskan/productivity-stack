@@ -1,2 +1,2 @@
 export const API_URL =
-  "http://localhost:8000/api";
+  "https://productivity-backend-x795.onrender.com/api";
