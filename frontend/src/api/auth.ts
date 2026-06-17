@@ -10,7 +10,7 @@ export const registerUser = (
   password: string
 ) => {
   return axios.post(
-    `${API_URL}/register`,
+    `${API_URL}/auth/register`,
     {
       name,
       email,
@@ -24,7 +24,7 @@ export const loginUser = (
   password: string
 ) => {
   return axios.post(
-    `${API_URL}/login`,
+    `${API_URL}/auth/login`,
     {
       email,
       password,
