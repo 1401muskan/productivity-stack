@@ -34,11 +34,17 @@ export default function Sidebar() {
   return (
     <aside className="w-64 border-r border-zinc-800 bg-zinc-950 text-white p-6">
 
-      <h1 className="text-2xl font-bold mb-10">
-        Workspace
-      </h1>
+      <div className="mb-8">
+  <h1 className="text-4xl font-extrabold tracking-tight text-white">
+  FlowSpace
+</h1>
 
-      <nav className="space-y-2">
+<p className="text-zinc-500 text-base mt-2">
+  Personal Productivity
+</p>
+</div>
+
+<nav className="space-y-2">
         {navItems.map((item) => {
           const Icon = item.icon;
 

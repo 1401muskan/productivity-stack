@@ -1,7 +1,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
-import MenuBar from "./MenuBar";
+// import MenuBar from "./MenuBar";
 
 interface Props {
   content: string;
@@ -42,7 +42,7 @@ export default function NoteEditor({
 
   return (
     <div className="border border-zinc-800 rounded-xl">
-      <MenuBar editor={editor} />
+      {/* <MenuBar editor={editor} /> */}
       <EditorContent editor={editor} />
     </div>
   );

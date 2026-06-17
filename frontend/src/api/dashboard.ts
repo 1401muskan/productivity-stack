@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL =
+const API =
   "http://localhost:8000/api/dashboard";
 
 const token =
@@ -8,7 +8,7 @@ const token =
 
 export const getStats = () =>
   axios.get(
-    `${API_URL}/stats`,
+    `${API}/stats`,
     {
       headers: {
         Authorization:

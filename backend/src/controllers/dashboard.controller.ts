@@ -1,6 +1,10 @@
 import type { Response } from "express";
+
 import { prisma } from "../config/prisma.js";
-import type { AuthRequest } from "../middlewares/auth.middleware.js";
+
+import type {
+  AuthRequest,
+} from "../middlewares/auth.middleware.js";
 
 export const getStats = async (
   req: AuthRequest,
@@ -13,17 +17,32 @@ export const getStats = async (
       });
     }
 
-    const notesCount =
+    const notes =
       await prisma.note.count({
         where: {
           userId: req.userId,
         },
       });
 
+    const tasks =
+      await prisma.task.count({
+        where: {
+          userId: req.userId,
+        },
+      });
+
+    const completed =
+      await prisma.task.count({
+        where: {
+          userId: req.userId,
+          status: "DONE",
+        },
+      });
+
     res.json({
-      notes: notesCount,
-      tasks: 0,
-      events: 0,
+      notes,
+      tasks,
+      completed,
     });
   } catch {
     res.status(500).json({
