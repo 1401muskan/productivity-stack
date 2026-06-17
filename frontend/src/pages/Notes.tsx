@@ -60,6 +60,8 @@ export default function Notes() {
   const handleSave = async () => {
   if (!selectedNote) return;
 
+  console.log("selectedNote", selectedNote);
+console.log("selectedNote.id", selectedNote.id);
   try {
     setSaving(true);
 
